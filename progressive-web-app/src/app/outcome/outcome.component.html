@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Outcome</h1>
+  <div class="actions">
+    <button class="btn">Add New Outcome</button>
+  </div>
+  <div class="outcome-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of outcomeItems">
+          <td>{{ item.description }}</td>
+          <td>{{ item.amount | number }}</td>
+          <td>{{ item.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

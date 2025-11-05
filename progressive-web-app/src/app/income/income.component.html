@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Income</h1>
+  <div class="actions">
+    <button class="btn">Add New Income</button>
+  </div>
+  <div class="income-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of incomeItems">
+          <td>{{ item.description }}</td>
+          <td>{{ item.amount | number }}</td>
+          <td>{{ item.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
