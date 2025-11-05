@@ -13,11 +13,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of outcomeItems">
+        @for (item of outcomeItems; track $index) {
+        <tr>
           <td>{{ item.description }}</td>
-          <td>{{ item.amount | number }}</td>
+          <td>{{ item.amount }}</td>
           <td>{{ item.date }}</td>
         </tr>
+        }
       </tbody>
     </table>
   </div>
