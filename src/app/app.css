@@ -1,4 +1,9 @@
-
 .container {
   display: flex;
+}
+
+.content {
+  flex-grow: 1;
+  margin: 20px auto;
+  padding: 30px;
 }
