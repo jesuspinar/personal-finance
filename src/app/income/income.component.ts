@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-income',
   templateUrl: './income.component.html',
-  styleUrls: ['./income.component.css']
+  styleUrls: ['./income.component.css'],
+  imports: [RouterLink]
 })
 export class IncomeComponent {
   incomeItems = [
