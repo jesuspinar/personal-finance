@@ -12,8 +12,8 @@ export class OfflineDbService extends Dexie {
   constructor() {
     super('PersonalFinanceDB');
     this.version(1).stores({
-      incomes: '++id, date, amount',
-      outcomes: '++id, date, amount'
+      incomes: '++id, description, date, amount',
+      outcomes: '++id, description, date, amount'
     });
   }
 }
