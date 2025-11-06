@@ -8,6 +8,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'income', component: IncomeComponent },
   { path: 'add-income', component: IncomeFormComponent },
+  { path: 'edit-income', component: IncomeFormComponent },
   { path: 'outcome', component: OutcomeComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
