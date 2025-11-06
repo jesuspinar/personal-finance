@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (item of incomeItems; track $index) {
+      @for (item of incomeItems(); track $index) {
       <tr>
         <td>{{ item.description }}</td>
         <td>{{ item.amount }}</td>

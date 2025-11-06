@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { OfflineDbService } from '../offline-db.service';
+import { Income } from '../shared/models/income.model';
 
 @Component({
   selector: 'app-income',
   templateUrl: './income.component.html',
   styleUrls: ['./income.component.css'],
+  standalone: true,
   imports: [RouterLink]
 })
-export class IncomeComponent {
-  incomeItems = [
-    { id: 1, description: 'Salary', amount: 15000, date: '2025-11-01' },
-    { id: 2, description: 'Freelance', amount: 3000, date: '2025-10-15' },
-    { id: 3, description: 'Investments', amount: 1000, date: '2025-10-01' }
-  ];
+export class IncomeComponent implements OnInit {
+  private readonly db = inject(OfflineDbService);
+  incomeItems = signal<Income[]>([]);
+
+  ngOnInit(): void {
+    this.db.incomes.toArray().then(items => this.incomeItems.set(items));
+  }
 }

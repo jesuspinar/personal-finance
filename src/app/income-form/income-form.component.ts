@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { OfflineDbService } from '../offline-db.service';
 
 @Component({
   selector: 'app-income-form',
@@ -12,6 +13,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 export class IncomeFormComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
+  private readonly db = inject(OfflineDbService);
   mode = signal<'add' | 'edit'>('add');
 
   form = this.fb.group({
@@ -29,8 +31,8 @@ export class IncomeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-
-    console.log('Form submitted:', this.form.value);
-
+    if (this.form.valid) {
+      this.db.incomes.add(this.form.value as any).then(() => this.router.navigate(['/income']));
+    }
   }
 }
