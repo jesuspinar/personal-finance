@@ -4,7 +4,7 @@ This is a simple personal finance application that helps users track their incom
 This was built as an educational project.
 
 ## Roadmap
-- [ ] Responsive sidebar
+- [x] Responsive sidebar
 - [ ] Progressive web app functionality
 - [ ] Profile budget
 - [ ] Outcome tracker
