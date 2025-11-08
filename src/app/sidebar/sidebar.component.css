@@ -37,11 +37,6 @@
   background-color: #34495e;
 }
 
-.sidebar-nav a.router-link-active {
-  background-color: #3498db;
-  border-left: 3px solid #3498db;
-}
-
 .sidebar-nav i {
   margin-right: 10px;
   font-size: 1.1rem;
@@ -49,6 +44,7 @@
 
 .active {
   background-color: #31475d;
+  border-left: 3px solid yellow;
 }
 
 @media (max-width: 768px) {
@@ -65,9 +61,11 @@
     background-color: #2c3e50;
     z-index: 1000;
   }
+
   .sidebar-header {
     display: none;
   }
+
   .sidebar-nav {
     display: flex;
     width: 100%;
@@ -75,15 +73,21 @@
     flex-direction: row;
     margin: 0;
   }
+
   .sidebar-nav a {
     flex: 1;
     padding: 0;
     text-align: center;
     color: white;
   }
+
   .sidebar-nav a i {
     display: block;
     margin: 0 auto;
     font-size: 1.5rem;
+  }
+
+  .active {
+    border-left: unset;
   }
 }
