@@ -5,7 +5,7 @@ This was built as an educational project.
 
 ## Roadmap
 - [x] Responsive sidebar
-- [ ] Progressive web app functionality
+- [x] Progressive web app functionality
 - [ ] Profile budget
 - [ ] Outcome tracker
 - [ ] Export to CSV
