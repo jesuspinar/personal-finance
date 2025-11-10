@@ -1,6 +1,6 @@
 {
-  "name": "progressive-web-app",
-  "short_name": "progressive-web-app",
+  "name": "personal-finance",
+  "short_name": "personal-finance",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

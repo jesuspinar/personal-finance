@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "progressive-web-app": {
+    "personal-finance": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "progressive-web-app:build:production"
+              "buildTarget": "personal-finance:build:production"
             },
             "development": {
-              "buildTarget": "progressive-web-app:build:development"
+              "buildTarget": "personal-finance:build:development"
             }
           },
           "defaultConfiguration": "development"
