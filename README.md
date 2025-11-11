@@ -4,12 +4,12 @@ This is a simple personal finance application that helps users track their incom
 This was built as an educational project.
 
 ## Roadmap
+- [ ] Profile budget
+- [ ] Export to CSV
+- [ ] Dashboard with Data visualization
+- [x] Outcome tracker
 - [x] Responsive sidebar
 - [x] Progressive web app functionality
-- [ ] Profile budget
-- [x] Outcome tracker
-- [ ] Export to CSV
-- [ ] Data visualization
 - [x] Income tracker
 - [x] Offline database
 - [x] Responsive layout
