@@ -2,6 +2,7 @@
   --primary-color: #007bff;
   --primary-color-hover: #0056b3;
   --border-color: #ddd;
+  --danger-color: #dc3545;
 }
 
 body {
@@ -63,6 +64,12 @@ td {
   cursor: pointer;
   margin-right: 10px;
 }
+
+
+.delete-action {
+  color: var(--danger-color);
+}
+
 
 .btn {
   background-color: var(--primary-color);

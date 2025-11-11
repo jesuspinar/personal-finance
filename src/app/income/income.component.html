@@ -22,7 +22,7 @@
         <td>{{ item.date }}</td>
         <td>
           <a class="table-action" [routerLink]="['/income/edit-income']" [queryParams]="{id:item.id}">Edit</a>
-          <a class="table-action" (click)="deleteIncomeItem(item.id)">Delete</a>
+          <a class="table-action delete-action" (click)="deleteIncomeItem(item.id)">Delete</a>
         </td>
       </tr>
       } @empty {
