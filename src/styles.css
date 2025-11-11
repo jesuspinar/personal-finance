@@ -20,24 +20,35 @@ body {
 /* Components */
 .table-container {
   border-radius: 6px;
-  overflow: auto;
+  overflow-x: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  overflow-x: scroll;
+  table-layout: fixed;
 }
 
-th {
-  padding: 15px;
+th,
+td {
+  padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  word-wrap: break-word;
+  overflow: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-td {
-  padding: 15px;
+@media (max-width: 600px) {
+
+  th,
+  td {
+    font-size: 14px;
+    white-space: normal
+  }
 }
 
 .btn {
