@@ -7,7 +7,7 @@ This was built as an educational project.
 - [x] Responsive sidebar
 - [x] Progressive web app functionality
 - [ ] Profile budget
-- [ ] Outcome tracker
+- [x] Outcome tracker
 - [ ] Export to CSV
 - [ ] Data visualization
 - [x] Income tracker
