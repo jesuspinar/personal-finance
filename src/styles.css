@@ -19,6 +19,12 @@ body {
 }
 
 /* Components */
+.no-data {
+  padding-top: 20px;
+  text-align: center;
+  font-style: italic;
+  color: var(--border-color);
+}
 .table-container {
   border-radius: 6px;
   overflow-x: auto;
