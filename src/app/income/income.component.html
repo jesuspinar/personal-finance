@@ -1,7 +1,9 @@
 <h1>Income</h1>
+
 <div class="actions">
   <button class="btn" routerLink="/income/add-income">Add Record</button>
 </div>
+
 <div class="table-container">
   <table>
     <thead>
@@ -13,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (item of incomeItems(); track $index) {
+      @for (item of pagination.paginatedItems(); track $index) {
       <tr>
         <td>{{ item.description }}</td>
         <td>{{ item.amount }}</td>
@@ -23,7 +25,34 @@
           <a class="table-action" (click)="deleteIncomeItem(item.id)">Delete</a>
         </td>
       </tr>
+      } @empty {
+      <tr>
+        <td colspan="4" class="text-center">No records found</td>
+      </tr>
       }
     </tbody>
   </table>
+
+  <div class="pagination-container">
+    <div class="page-size">
+      <label for="pageSize">Rows per page:</label>
+      <select id="pageSize" [value]="pagination.itemsPerPage()"
+        (change)="changeItemsPerPage($any($event.target).value)">
+        @for(size of [5,10,25,50]; track size) {
+        <option [value]="size">{{ size }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="page-controls">
+      <button (click)="changePage(pagination.currentPage() - 1)" [disabled]="pagination.currentPage() === 1">
+        Previous
+      </button>
+      <span>Page {{ pagination.currentPage() }} of {{ pagination.totalPages() }}</span>
+      <button (click)="changePage(pagination.currentPage() + 1)"
+        [disabled]="pagination.currentPage() === pagination.totalPages()">
+        Next
+      </button>
+    </div>
+  </div>
 </div>
