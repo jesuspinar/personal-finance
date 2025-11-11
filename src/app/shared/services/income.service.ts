@@ -34,4 +34,8 @@ export class IncomeService {
     await this.db.incomes.put(income);
     await this.loadAll();
   }
+
+  async getById(id: number) {
+    return this.db.incomes.get(id);
+  }
 }

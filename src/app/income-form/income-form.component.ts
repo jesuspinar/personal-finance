@@ -1,20 +1,21 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { OfflineDbService } from '../shared/services/offline-db.service';
+import { IncomeService } from '../shared/services/income.service';
 
 @Component({
   selector: 'app-income-form',
-  templateUrl: './income-form.component.html',
-  styleUrls: ['./income-form.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule],
+  templateUrl: './income-form.component.html',
+  styleUrls: ['./income-form.component.css']
 })
 export class IncomeFormComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly fb = inject(FormBuilder);
-  private readonly db = inject(OfflineDbService);
+  private readonly incomeService = inject(IncomeService);
+
   mode = signal<'add' | 'edit'>('add');
   currentId: number | null = null;
 
@@ -25,35 +26,38 @@ export class IncomeFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(async params => {
       const idParam = params['id'];
       if (idParam) {
         this.mode.set('edit');
         this.currentId = +idParam;
-        this.db.incomes.get(this.currentId).then(income => {
-          if (income) {
-            this.form.patchValue({
-              description: income.description,
-              amount: income.amount.toString(),
-              date: income.date
-            });
-          }
-        });
+
+        // Load the income record via the service
+        const income = await this.incomeService.getById(this.currentId);
+        if (income) {
+          this.form.patchValue({
+            description: income.description,
+            amount: income.amount.toString(),
+            date: income.date
+          });
+        }
       } else {
         this.mode.set('add');
       }
     });
   }
 
-  onSubmit(): void {
-    if (this.form.valid) {
-      if (this.mode() === 'edit' && this.currentId != null) {
-        this.db.incomes.update(this.currentId, this.form.value as any)
-          .then(() => this.router.navigate(['/income']));
-      } else {
-        this.db.incomes.add(this.form.value as any)
-          .then(() => this.router.navigate(['/income']));
-      }
+  async onSubmit(): Promise<void> {
+    if (!this.form.valid) return;
+
+    const incomeData = this.form.value as any;
+
+    if (this.mode() === 'edit' && this.currentId != null) {
+      await this.incomeService.update({ id: this.currentId, ...incomeData });
+    } else {
+      await this.incomeService.add(incomeData);
     }
+
+    this.router.navigate(['/income']);
   }
 }
