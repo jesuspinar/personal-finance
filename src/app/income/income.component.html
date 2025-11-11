@@ -1,6 +1,6 @@
 <h1>Income</h1>
 <div class="actions">
-  <button class="btn" routerLink="/add-income">Add New Income</button>
+  <button class="btn" routerLink="/income/add-income">Add New Income</button>
 </div>
 <div class="income-list">
   <table>
@@ -18,7 +18,7 @@
         <td>{{ item.description }}</td>
         <td>{{ item.amount }}</td>
         <td>{{ item.date }}</td>
-        <td><button class="btn" [routerLink]="['/edit-income']" [queryParams]="{id:item.id}">Edit</button></td>
+        <td><button class="btn" [routerLink]="['/income/edit-income']" [queryParams]="{id:item.id}">Edit</button></td>
       </tr>
       }
     </tbody>
