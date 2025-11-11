@@ -1,12 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IncomeService } from '../shared/services/income.service';
+import { PaginationComponent } from "../shared/components/pagination/pagination.component";
 
 
 @Component({
   selector: 'app-income',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, PaginationComponent],
   templateUrl: './income.component.html',
   styleUrls: ['./income.component.css']
 })
@@ -21,13 +22,5 @@ export class IncomeComponent implements OnInit {
   deleteIncomeItem(id: number | undefined): void {
     if (!id) return;
     this.incomeService.delete(id);
-  }
-
-  changePage(page: number): void {
-    this.pagination.changePage(page);
-  }
-
-  changeItemsPerPage(value: number): void {
-    this.pagination.changeItemsPerPage(+value);
   }
 }

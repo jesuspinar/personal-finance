@@ -32,27 +32,5 @@
       }
     </tbody>
   </table>
-
-  <div class="pagination-container">
-    <div class="page-size">
-      <label for="pageSize">Rows per page:</label>
-      <select id="pageSize" [value]="pagination.itemsPerPage()"
-        (change)="changeItemsPerPage($any($event.target).value)">
-        @for(size of [5,10,25,50]; track size) {
-        <option [value]="size">{{ size }}</option>
-        }
-      </select>
-    </div>
-
-    <div class="page-controls">
-      <button (click)="changePage(pagination.currentPage() - 1)" [disabled]="pagination.currentPage() === 1">
-        Previous
-      </button>
-      <span>Page {{ pagination.currentPage() }} of {{ pagination.totalPages() }}</span>
-      <button (click)="changePage(pagination.currentPage() + 1)"
-        [disabled]="pagination.currentPage() === pagination.totalPages()">
-        Next
-      </button>
-    </div>
-  </div>
+  <app-pagination [pagination]="pagination"></app-pagination>
 </div>

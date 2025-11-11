@@ -1,6 +1,7 @@
 :root {
   --primary-color: #007bff;
   --primary-color-hover: #0056b3;
+  --border-color: #ddd;
 }
 
 body {
@@ -74,6 +75,9 @@ td {
 
 /* Detect device's preferred color scheme */
 @media (prefers-color-scheme: dark) {
+  :root{
+    --border-color: #555;
+  }
   body {
     background-color: #121212;
     color: snow;
@@ -92,15 +96,15 @@ td {
     background-color: #181818;
 
   }
-  
+
   input{
     background-color: #222;
     color: snow;
-    border: 1px solid #555;
+    border: 1px solid var(--border-color);
   }
 
   th {
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid var(--border-color);
   }
 
   tr:hover {

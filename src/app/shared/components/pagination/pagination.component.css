@@ -1,0 +1,18 @@
+.pagination-container {
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.page-controls button {
+  margin: 0 0.25rem;
+}
+
+.page-size select {
+  margin-left: 0.5rem;
+}
