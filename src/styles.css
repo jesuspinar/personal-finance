@@ -92,6 +92,12 @@ td {
     background-color: #181818;
 
   }
+  
+  input{
+    background-color: #222;
+    color: snow;
+    border: 1px solid #555;
+  }
 
   th {
     border-bottom: 1px solid #555;
