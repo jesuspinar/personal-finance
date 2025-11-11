@@ -18,7 +18,10 @@
         <td>{{ item.description }}</td>
         <td>{{ item.amount }}</td>
         <td>{{ item.date }}</td>
-        <td><a class="table-action" [routerLink]="['/income/edit-income']" [queryParams]="{id:item.id}">Edit</a></td>
+        <td>
+          <a class="table-action" [routerLink]="['/income/edit-income']" [queryParams]="{id:item.id}">Edit</a>
+          <a class="table-action" (click)="deleteIncomeItem(item.id)">Delete</a>
+        </td>
       </tr>
       }
     </tbody>

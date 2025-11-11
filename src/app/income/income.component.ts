@@ -11,10 +11,18 @@ import { Income } from '../shared/models/income.model';
   imports: [RouterLink]
 })
 export class IncomeComponent implements OnInit {
+
   private readonly db = inject(OfflineDbService);
   incomeItems = signal<Income[]>([]);
 
   ngOnInit(): void {
     this.db.incomes.toArray().then(items => this.incomeItems.set(items));
+  }
+  deleteIncomeItem(id: number | undefined) {
+    if (id === undefined) return;
+
+    this.db.incomes.delete(id).then(() => {
+      this.incomeItems.update(items => items.filter(item => item.id !== id));
+    });
   }
 }
