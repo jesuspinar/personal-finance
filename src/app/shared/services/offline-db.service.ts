@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
-import { Income } from './shared/models/income.model';
-import { Outcome } from './shared/models/outcome.model';
+import { Income } from '../models/income.model';
+import { Outcome } from '../models/outcome.model';
 
 
 @Injectable({ providedIn: 'root' })

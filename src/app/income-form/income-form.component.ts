@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { OfflineDbService } from '../offline-db.service';
+import { OfflineDbService } from '../shared/services/offline-db.service';
 
 @Component({
   selector: 'app-income-form',

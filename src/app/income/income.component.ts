@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { OfflineDbService } from '../offline-db.service';
+import { OfflineDbService } from '../shared/services/offline-db.service';
 import { Income } from '../shared/models/income.model';
 
 @Component({
