@@ -35,7 +35,6 @@ th,
 td {
   padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
   word-wrap: break-word;
   overflow: auto;
   text-overflow: ellipsis;
@@ -49,6 +48,12 @@ td {
     font-size: 14px;
     white-space: normal
   }
+}
+
+.table-action {
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn {
@@ -82,8 +87,17 @@ td {
     color: whitesmoke
   }
 
+  .table-container {
+    background-color: #181818;
+
+  }
+
+  th {
+    border-bottom: 1px solid #555;
+  }
+
   tr:hover {
-    background-color: #0f0f0f;
+    background-color: #222;
   }
 }
 
@@ -100,6 +114,10 @@ td {
   h5,
   h6 {
     color: #333
+  }
+
+  th {
+    border-bottom: 1px solid #ddd;
   }
 
   tr:hover {
