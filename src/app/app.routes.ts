@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { IncomeComponent } from './income/income.component';
 import { OutcomeComponent } from './outcome/outcome.component';
 import { IncomeFormComponent } from './income-form/income-form.component';
+import { OutcomeFormComponent } from './outcome-form/outcome-form.component';
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -14,6 +15,13 @@ export const routes: Routes = [
       { path: 'edit-income', component: IncomeFormComponent },
     ]
   },
-  { path: 'outcome', component: OutcomeComponent },
+  {
+    path: 'outcome',
+    children: [
+      { path: '', component: OutcomeComponent },
+      { path: 'add-outcome', component: OutcomeFormComponent },
+      { path: 'edit-outcome', component: OutcomeFormComponent },
+    ]
+  },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
