@@ -1,21 +1,30 @@
 <h1>Finance Dashboard</h1>
+
 <div class="stats-grid">
   <div class="stat-card">
     <h2>Monthly Income</h2>
-    <p>{{ monthlyIncome }} USD</p>
+    <p>{{ monthlyIncome | number: '1.2-2' }} USD</p>
   </div>
   <div class="stat-card">
     <h2>Monthly Outcome</h2>
-    <p>{{ monthlyOutcome }} USD</p>
+    <p>{{ monthlyOutcome | number: '1.2-2' }} USD</p>
   </div>
   <div class="stat-card">
     <h2>Current Balance</h2>
-    <p>{{ balance }} USD</p>
+    <p>{{ balance | number: '1.2-2' }} USD</p>
   </div>
 </div>
+
 <div class="charts">
   <h2>Income & Outcome Trends</h2>
   <div class="chart-placeholder">
-    <p>Chart will display income and outcome trends over time</p>
+    <div class="bar-chart">
+      <div class="bar income" [style.height.%]="monthlyIncome / (monthlyIncome + monthlyOutcome) * 100">
+        Income
+      </div>
+      <div class="bar outcome" [style.height.%]="monthlyOutcome / (monthlyIncome + monthlyOutcome) * 100">
+        Outcome
+      </div>
+    </div>
   </div>
 </div>

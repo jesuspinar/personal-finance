@@ -1,28 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { DashboardService } from '../shared/services/dashboard.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  imports: [DecimalPipe]
 })
 export class DashboardComponent implements OnInit {
+  private dashboardService = inject(DashboardService);
+
   incomeTotal = 0;
   outcomeTotal = 0;
   balance = 0;
   monthlyIncome = 0;
   monthlyOutcome = 0;
 
-  ngOnInit(): void {
-    // This would normally fetch data from the SQLite database
-    this.fetchFinancialData();
-  }
+  async ngOnInit() {
+    const now = new Date();
+    const { incomeTotal, outcomeTotal, balance } = await this.dashboardService.getTotals();
+    const { monthlyIncome, monthlyOutcome } = await this.dashboardService.getMonthlyStats(
+      now.getFullYear(),
+      now.getMonth()
+    );
 
-  private fetchFinancialData(): void {
-    // Simulate database fetch
-    this.incomeTotal = 15000;
-    this.outcomeTotal = 12000;
-    this.balance = this.incomeTotal - this.outcomeTotal;
-    this.monthlyIncome = this.incomeTotal / 12;
-    this.monthlyOutcome = this.outcomeTotal / 12;
+    this.incomeTotal = incomeTotal;
+    this.outcomeTotal = outcomeTotal;
+    this.balance = balance;
+    this.monthlyIncome = monthlyIncome;
+    this.monthlyOutcome = monthlyOutcome;
   }
 }
