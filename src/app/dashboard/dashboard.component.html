@@ -1,3 +1,22 @@
+<div class="top-right-actions">
+  <button class="icon-btn" (click)="onExport()">
+    <img src="/assets/icons/box-arrow-up.svg" alt="Export" />
+  </button>
+
+  <button class="icon-btn" (click)="onImport()">
+    <img src="/assets/icons/box-arrow-in-down.svg" alt="Import" />
+  </button>
+
+  <input
+    id="fileInput"
+    type="file"
+    accept=".csv"
+    formControlName="file"
+    (change)="onFileSelected($event)"
+    style="display: none"
+  />
+</div>
+
 <h1>Finance Dashboard</h1>
 
 <div class="stats-grid">
