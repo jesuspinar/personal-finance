@@ -22,7 +22,7 @@ export class OutcomeFormComponent implements OnInit {
   form = this.fb.group({
     description: ['', [Validators.required]],
     amount: ['', [Validators.required, Validators.min(0)]],
-    date: ['', [Validators.required]]
+    date: [new Date().toISOString().substring(0, 10), [Validators.required]]
   });
 
   ngOnInit(): void {
