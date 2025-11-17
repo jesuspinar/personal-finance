@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular App
-        run: npx ng build --configuration production --base-href /${{ github.event.repository.name }}/
+        run: npx ng build --configuration production --base-href /${{ github.event.repository.name }}/ --deploy-url /${{ github.event.repository.name }}/
 
       - name: Add .nojekyll file
         run: touch ./dist/personal-finance/browser/.nojekyll
