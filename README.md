@@ -5,7 +5,7 @@ This was built as an educational project.
 
 ## Roadmap
 - [ ] Profile budget
-- [ ] Export to CSV
+- [x] Export to CSV
 - [x] Dashboard with Data visualization
 - [x] Outcome tracker
 - [x] Responsive sidebar
