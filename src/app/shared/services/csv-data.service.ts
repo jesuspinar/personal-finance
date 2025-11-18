@@ -6,30 +6,21 @@ export class CsvDataService {
 
   private readonly db = inject(OfflineDbService);
 
-
   async exportAllToCsv(): Promise<string> {
-    const incomes = await this.db.incomes.toArray();
-    const outcomes = await this.db.outcomes.toArray();
+    const records = await this.db.records.toArray();
+    if (!records.length) return '';
 
-    const combined = [
-      ...incomes.map(i => ({ ...i, type: 'income' })),
-      ...outcomes.map(o => ({ ...o, type: 'outcome' }))
-    ];
-
-    if (!combined.length) return '';
-
-    const headers = Object.keys(combined[0]);
+    const headers = Object.keys(records[0]);
 
     const csvRows = [
       headers.join(','),
-      ...combined.map(row =>
+      ...records.map(row =>
         headers.map(h => JSON.stringify((row as any)[h] ?? '')).join(',')
       )
     ];
 
     return csvRows.join('\n');
   }
-
 
   async importCsv(csvText: string) {
     const lines = csvText.trim().split('\n');
@@ -45,28 +36,10 @@ export class CsvDataService {
       return obj;
     });
 
-    const incomes = rows.filter(r => r.type === 'income');
-    const outcomes = rows.filter(r => r.type === 'outcome');
-
-    if (incomes.length) {
-      await this.db.incomes.bulkAdd(
-        incomes.map(i => {
-          const { type, ...data } = i;
-          return data;
-        })
-      );
-    }
-
-    if (outcomes.length) {
-      await this.db.outcomes.bulkAdd(
-        outcomes.map(o => {
-          const { type, ...data } = o;
-          return data;
-        })
-      );
+    if (rows.length) {
+      await this.db.records.bulkAdd(rows);
     }
   }
-
 
   private parseCsvLine(line: string): string[] {
     const result: string[] = [];
