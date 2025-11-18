@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ROUTES } from '../shared/utils/routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,4 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrls: ['./sidebar.component.css'],
   imports: [RouterLink, RouterLinkActive]
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  readonly routes = ROUTES;
+}
