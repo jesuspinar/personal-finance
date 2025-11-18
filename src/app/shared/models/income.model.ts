@@ -1,6 +1,3 @@
-export interface Income {
-  id?: number;
-  amount: number;
-  details: string;
-  date: string;
-}
+import { Record } from "./record.model";
+
+export interface Income extends Record {}

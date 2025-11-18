@@ -1,26 +1,24 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { IncomeComponent } from './income/income.component';
-import { OutcomeComponent } from './outcome/outcome.component';
-import { IncomeFormComponent } from './income-form/income-form.component';
-import { OutcomeFormComponent } from './outcome-form/outcome-form.component';
+import { RecordsComponent } from './records/records.component';
+import { RecordFormComponent } from './record-form/record-form.component';
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   {
     path: 'income',
     children: [
-      { path: '', component: IncomeComponent },
-      { path: 'add-income', component: IncomeFormComponent },
-      { path: 'edit-income', component: IncomeFormComponent },
+      { path: '', component: RecordsComponent },
+      { path: 'add-income', component: RecordFormComponent },
+      { path: 'edit-income', component: RecordFormComponent },
     ]
   },
   {
-    path: 'outcome',
+    path: 'expense',
     children: [
-      { path: '', component: OutcomeComponent },
-      { path: 'add-outcome', component: OutcomeFormComponent },
-      { path: 'edit-outcome', component: OutcomeFormComponent },
+      { path: '', component: RecordsComponent },
+      { path: 'add-expense', component: RecordFormComponent },
+      { path: 'edit-expense', component: RecordFormComponent },
     ]
   },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
