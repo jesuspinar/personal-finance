@@ -20,7 +20,7 @@ export class OutcomeFormComponent implements OnInit {
   currentId: number | null = null;
 
   form = this.fb.group({
-    description: ['', [Validators.required]],
+    details: ['', [Validators.required]],
     amount: ['', [Validators.required, Validators.min(0)]],
     date: [new Date().toISOString().substring(0, 10), [Validators.required]]
   });
@@ -36,7 +36,7 @@ export class OutcomeFormComponent implements OnInit {
         const outcome = await this.outcomeService.getById(this.currentId);
         if (outcome) {
           this.form.patchValue({
-            description: outcome.description,
+            details: outcome.details,
             amount: outcome.amount.toString(),
             date: outcome.date
           });

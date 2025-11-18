@@ -20,7 +20,7 @@ export class IncomeFormComponent implements OnInit {
   currentId: number | null = null;
 
   form = this.fb.group({
-    description: ['', [Validators.required]],
+    details: ['', [Validators.required]],
     amount: ['', [Validators.required, Validators.min(0)]],
     date: [new Date().toISOString().substring(0, 10), [Validators.required]]
   });
@@ -36,7 +36,7 @@ export class IncomeFormComponent implements OnInit {
         const income = await this.incomeService.getById(this.currentId);
         if (income) {
           this.form.patchValue({
-            description: income.description,
+            details: income.details,
             amount: income.amount.toString(),
             date: income.date
           });

@@ -1,6 +1,6 @@
 export interface Income {
   id?: number;
   amount: number;
-  description: string;
+  details: string;
   date: string;
 }

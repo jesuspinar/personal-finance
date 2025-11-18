@@ -2,8 +2,8 @@
   <h2>{{ this.mode() === 'edit' ? 'Edit Income' : 'Add Income' }}</h2>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" id="description" formControlName="description" name="description" required>
+      <label for="details">Details</label>
+      <input type="text" id="details" formControlName="details" name="details" required>
     </div>
     <div class="form-group">
       <label for="amount">Amount</label>
