@@ -9,8 +9,28 @@
   font-size: 1rem;
 }
 
-.page-controls button {
-  margin: 0 0.25rem;
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  color: var(--primary-color);
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+}
+
+button svg {
+  scale: 2;
+  fill: currentColor;
+}
+
+.page-controls button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .page-size select {
