@@ -28,6 +28,10 @@ h2 {
   box-sizing: border-box;
 }
 
+input[type='date'] {
+  display: inline-flex;
+}
+
 .btn-group {
   display: flex;
   justify-content: space-between;
