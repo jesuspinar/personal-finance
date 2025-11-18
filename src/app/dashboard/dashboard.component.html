@@ -1,4 +1,4 @@
-<div class="top-right-actions">
+<form [formGroup]="fileForm" class="top-right-actions">
   <button class="icon-btn" (click)="onExport()" alt="Export">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" viewBox="0 0 16 16">
       <path fill-rule="evenodd"
@@ -18,7 +18,7 @@
   </button>
   <input id="fileInput" type="file" accept=".csv" formControlName="file" (change)="onFileSelected($event)"
     style="display: none" />
-</div>
+</form>
 
 <h1>Finance Dashboard</h1>
 

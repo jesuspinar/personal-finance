@@ -10,11 +10,11 @@ export class DashboardService {
 
     const incomeTotal = records
       .filter(r => r.type === 'income')
-      .reduce((sum, r) => sum + r.amount, 0);
+      .reduce((sum, r) => +sum + +r.amount, 0);
 
     const outcomeTotal = records
       .filter(r => r.type === 'expense')
-      .reduce((sum, r) => sum + r.amount, 0);
+      .reduce((sum, r) => +sum + +r.amount, 0);
 
     const balance = incomeTotal - outcomeTotal;
 
@@ -34,11 +34,11 @@ export class DashboardService {
 
     const monthlyIncome = records
       .filter(r => r.type === 'income')
-      .reduce((sum, r) => sum + r.amount, 0);
+      .reduce((sum, r) => +sum + +r.amount, 0);
 
     const monthlyOutcome = records
       .filter(r => r.type === 'expense')
-      .reduce((sum, r) => sum + r.amount, 0);
+      .reduce((sum, r) => +sum + +r.amount, 0);
 
     return { monthlyIncome, monthlyOutcome };
   }
