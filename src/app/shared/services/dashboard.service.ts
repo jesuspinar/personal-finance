@@ -13,7 +13,7 @@ export class DashboardService {
       .reduce((sum, r) => sum + r.amount, 0);
 
     const outcomeTotal = records
-      .filter(r => r.type === 'outcome')
+      .filter(r => r.type === 'expense')
       .reduce((sum, r) => sum + r.amount, 0);
 
     const balance = incomeTotal - outcomeTotal;
@@ -37,7 +37,7 @@ export class DashboardService {
       .reduce((sum, r) => sum + r.amount, 0);
 
     const monthlyOutcome = records
-      .filter(r => r.type === 'outcome')
+      .filter(r => r.type === 'expense')
       .reduce((sum, r) => sum + r.amount, 0);
 
     return { monthlyIncome, monthlyOutcome };
