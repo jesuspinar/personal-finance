@@ -26,6 +26,7 @@ body {
   font-style: italic;
   color: var(--border-color);
 }
+
 .table-container {
   border-radius: 6px;
   overflow-x: auto;
@@ -66,11 +67,6 @@ td {
 }
 
 
-.delete-action {
-  color: var(--danger-color);
-}
-
-
 .btn {
   background-color: var(--primary-color);
   color: white;
@@ -80,6 +76,15 @@ td {
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+
+}
+
+.btn.danger {
+  background-color: var(--danger-color);
+}
+
+.btn.danger:hover {
+  background-color: var(--danger-color);
 }
 
 .btn:hover {
@@ -88,9 +93,10 @@ td {
 
 /* Detect device's preferred color scheme */
 @media (prefers-color-scheme: dark) {
-  :root{
+  :root {
     --border-color: #555;
   }
+
   body {
     background-color: #121212;
     color: snow;
@@ -110,7 +116,7 @@ td {
 
   }
 
-  input{
+  input {
     background-color: #222;
     color: snow;
     border: 1px solid var(--border-color);

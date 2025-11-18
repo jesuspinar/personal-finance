@@ -1,16 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { OfflineDbService } from './offline-db.service';
 import { PaginationService } from './pagination.service';
-import { Record } from '../models/record.model';
-
-
+import { Record, RecordType } from '../models/record.model';
 
 @Injectable({ providedIn: 'root' })
 export class RecordService {
   private readonly db = inject(OfflineDbService);
   readonly pagination = inject(PaginationService<Record>);
 
-  async loadByType(type: 'income' | 'expense'): Promise<void> {
+  async loadByType(type: RecordType): Promise<void> {
     const items = await this.db.records.filter((obj) => obj.type === type).toArray();
     this.pagination.setItems(items);
   }
@@ -27,13 +25,11 @@ export class RecordService {
 
   async add(record: Record): Promise<void> {
     await this.db.records.add(record);
-    // await this.loadAll();
   }
 
   async update(record: Record): Promise<void> {
     if (!record.id) throw new Error('Cannot update record without id');
     await this.db.records.put(record);
-    // await this.loadAll();
   }
 
   async getById(id: number) {

@@ -13,6 +13,11 @@
       <label for="date">Date</label>
       <input type="date" id="date" formControlName="date" name="date" required>
     </div>
-    <button class="btn" type="submit">Submit</button>
+    <div class="btn-group">
+      <button class="btn" type="submit">Submit</button>
+      @if(this.mode() ==='edit'){
+      <button class="btn danger" type="button" (click)="deleteIncomeItem()">Delete</button>
+      }
+    </div>
   </form>
 </div>

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RecordService } from '../shared/services/record.service';
 import { Record } from '../shared/models/record.model';
+import { ROUTES } from '../shared/utils/routes';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { Record } from '../shared/models/record.model';
   styleUrls: ['./record-form.component.css']
 })
 export class RecordFormComponent implements OnInit {
+  private readonly routes = ROUTES
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly fb = inject(FormBuilder);
@@ -48,11 +50,17 @@ export class RecordFormComponent implements OnInit {
     });
   }
 
+  deleteIncomeItem(): void {
+    if (!this.currentId()) return;
+    this.recordService.delete(this.currentId());
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
   async onSubmit(): Promise<void> {
     if (!this.form.valid) return;
 
     const recordData = this.form.value as any;
-    const type = this.router.url.includes('expense') ? 'expense' : 'income'
+    const type = this.router.url.includes(this.routes.EXPENSE) ? this.routes.EXPENSE : this.routes.INCOME
 
     if (this.mode() === 'edit' && this.currentId() != null) {
       await this.recordService.update({ id: this.currentId(), ...recordData, type });
