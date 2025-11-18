@@ -1,7 +1,7 @@
-<h1>Income</h1>
+<h1>{{title}}</h1>
 
 <div class="actions">
-  <button class="btn" routerLink="/income/add-income">Add Record</button>
+  <button class="btn" (click)="handleAddRedirect()">Add Record</button>
 </div>
 
 <div class="table-container">
@@ -11,23 +11,18 @@
         <th>Details</th>
         <th>Amount</th>
         <th>Date</th>
-        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       @for (item of pagination.paginatedItems(); track $index) {
-      <tr>
+      <tr (click)="handleEditRedirect(item)" style="cursor: pointer;">
         <td>{{ item.details }}</td>
         <td>{{ item.amount }}</td>
         <td>{{ item.date }}</td>
-        <td>
-          <a class="table-action" [routerLink]="['/income/edit-income']" [queryParams]="{id:item.id}">Edit</a>
-          <a class="table-action delete-action" (click)="deleteIncomeItem(item.id)">Delete</a>
-        </td>
       </tr>
       } @empty {
       <tr>
-        <td colspan="4" class="no-data">No records found</td>
+        <td colspan="3" class="no-data">No records found</td>
       </tr>
       }
     </tbody>

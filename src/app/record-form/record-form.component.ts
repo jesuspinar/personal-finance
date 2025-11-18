@@ -20,7 +20,6 @@ export class RecordFormComponent implements OnInit {
 
   mode = signal<'add' | 'edit'>('add');
   currentId = signal(0);
-  readonly currentType = signal('expense');
 
   form = this.fb.group({
     details: ['', [Validators.required]],
@@ -53,7 +52,7 @@ export class RecordFormComponent implements OnInit {
     if (!this.form.valid) return;
 
     const recordData = this.form.value as any;
-    const type = this.router.url.includes(this.currentType()) ? 'expense' : 'income'
+    const type = this.router.url.includes('expense') ? 'expense' : 'income'
 
     if (this.mode() === 'edit' && this.currentId() != null) {
       await this.recordService.update({ id: this.currentId(), ...recordData, type });
