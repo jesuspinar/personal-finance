@@ -9,5 +9,6 @@
 @media (max-width: 768px) {
   .content {
     margin-left: auto;
+    padding: 1rem;
   }
 }
